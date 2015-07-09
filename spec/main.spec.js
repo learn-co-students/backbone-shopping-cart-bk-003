@@ -2,12 +2,10 @@
 
 describe( "#boostrap", function() {
   it("should instantiate your view and return the view object", function() {
-    var yourView = bootstrap();
-    expect(yourView.el).toContainHtml('<h1>blake</h1>')
-  });
-
-  it("should use the el property of your view to append the view to the body of the DOM", function() {
-    var yourView = bootstrap();
-    expect($("body")).toContainHtml('<h1>blake</h1>');
-  });      
+    bootstrap();
+    expect($("body")).toContainHtml('<form><label for="name"></label><input id="name" type="text" name="name"><input id= "mySubmit" type="submit" value="submit"></form>');
+    $("#name").val("blake")
+    $("#mySubmit").click()
+    expect(app.formView.model.get("name")).toEqual("blake")
+  });    
 });

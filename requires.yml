@@ -4,6 +4,7 @@ javascripts:
     - lib/jquery.min.js
     - lib/underscore.js
     - lib/backbone.js
+    - models/user.js
     - views/main.js
     - app.js
   specs:

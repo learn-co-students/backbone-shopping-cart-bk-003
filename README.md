@@ -45,3 +45,9 @@ user.get("height") #=> 6
 user.set("height", 6.5)
 user.get("height") #=> 6.5
 ```
+
+It's useful to give your views a reference to your model and sometimes the reverse is also useful. If you pass in the model key into the object used to contruct the view Backbone attaches it directly to the view object it instantiates.
+
+```javascript
+var myView = new MyView({model : user})
+myView.model #=> {height : 6.5, weight : 175, admin : true};
