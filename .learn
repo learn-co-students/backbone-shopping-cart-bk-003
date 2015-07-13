@@ -1,0 +1,7 @@
+languages:
+  - javascript
+tags:
+  - backbone
+  - jquery
+  - models
+resources: 1
