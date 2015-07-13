@@ -4,7 +4,7 @@ javascripts:
     - public/js/lib/jquery.min.js
     - public/js/lib/underscore.js
     - public/js/lib/backbone.js
-    - public/js/models/user.js
+    - public/js/models/cart.js
     - public/js/views/main.js
     - public/js/app.js
   specs:
