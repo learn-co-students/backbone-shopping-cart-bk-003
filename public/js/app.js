@@ -1,6 +1,6 @@
 app = {};
 
-function bootstrap() {
+function lonelyDino() {
   // instantiate a new user object and save it as a variable here
 
   // instantiate your view object here:
@@ -13,4 +13,4 @@ function bootstrap() {
   // append your view object's HTML to the DOM here
 }
 
-bootstrap();
+lonelyDino();
