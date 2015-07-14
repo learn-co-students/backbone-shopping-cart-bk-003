@@ -22,8 +22,6 @@ FormView = Backbone.View.extend({
     // make sure this function accepts the event parameter
 
     e.preventDefault();
-
-    debugger;
     // prevent the default behavior (submission) of the form 
     // (call preventDefault on the event) 
 
