@@ -7,67 +7,31 @@
     <link rel="stylesheet" href="public/css/custom/style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
-        <div class="row">
-          <div class="col-md-4">
-            <img src="public/img/logos/logo.png" />
-          </div>
-          <div class="col-md-8">
-            <h1>Lonely Dinosaur Designs</h1>
-          </div>
-        </div><!-- row -->
-      </div><!-- jumbotron -->
 
-      <!-- <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h2>Select a T-Shirt</h2>
-          <form id="shirt-form">
-            <div id="shirt-style">
-              <p><strong>Style:</strong></p>
-              <label>
-                <img src="public/img/shirts/dino.jpg" /><br>
-                <input type="radio" name="style" value="dino">All My Friends Are Dead
-              </label>
-              <label>
-                <img src="public/img/shirts/down.jpg" /><br>
-                <input type="radio" name="style" value="down">Im Down
-              </label>
-              <label>
-                <img src="public/img/shirts/locals.jpg" /><br>
-                <input type="radio" name="style" value="locals">Eat Locals
-              </label>
-            </div>
-            <div id="shirt-size">
-              <label id="size">Size:</label>
-              <br>
-              <select name="size">
-                <option value="x-small">X-Small</option>
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
-                <option value="x-large">X-Large</option>
-              </select>
-            </div>
-            <br>
+    <!-- your backbone app will add DOM elements here -->
 
-            <button type="submit">Purchase</button>
-          </form>
-        </div>
-      </div> -->
-      
-    </div><!-- container -->
 
-    <br>
-    <br>
+    <!----------------------------->
+    <!-- js libraries start here -->
+    <!----------------------------->
+    <!-- libraries must be loaded before your custom backbone scripts -->
+    <!-- load closure, jQuery, and underscore first -->
+    <script type="text/javascript" src="public/js/lib/closure.js"></script>
     <script type="text/javascript" src="public/js/lib/underscore.js"></script>
     <script type="text/javascript" src="public/js/lib/jquery.min.js"></script>
-
-    <!-- 
+    <!-- then load backbone -->
     <script type="text/javascript" src="public/js/lib/backbone.js"></script>
+
+
+    <!-------------------------->
+    <!-- backbone starts here -->
+    <!-------------------------->
+    <!-- model(s) -->
     <script type="text/javascript" src="public/js/models/cart.js"></script>
+    <!-- view(s) -->
     <script type="text/javascript" src="public/js/views/main.js"></script>
+    <!-- app -->
     <script type="text/javascript" src="public/js/app.js"></script>
-     -->
+  
   </body>
 </html>

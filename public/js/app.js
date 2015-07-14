@@ -13,7 +13,7 @@ function lonelyDino() {
   app.formView = view;
   // attach your view object to the app object as a property called "formView"
 
-  $(".container").append(app.formView.el);
+  $("body").append(app.formView.el);
   // append your view object's HTML to the div with the class container here
 }
 
