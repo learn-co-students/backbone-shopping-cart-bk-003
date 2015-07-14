@@ -1,10 +1,12 @@
 Cart = Backbone.Model.extend({
-  defaults: {
-    items: [],
-    subTotal: 0.00,
-    shipping: 0.00,
-    taxes: 0.00,
-    total: 0.00
+  defaults: function() { 
+    return {
+      items: [],
+      subTotal: 0.00,
+      shipping: 0.00,
+      taxes: 0.00,
+      total: 0.00
+    };
   },
   addShirtToCart: function(style, size) {
     this.addShirtToItems(style, size);

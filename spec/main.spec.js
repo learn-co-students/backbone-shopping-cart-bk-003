@@ -1,8 +1,10 @@
 'use strict';
 
-describe(".Cart", function() {
+describe("Model - Cart", function() {
   var cart;
+  
   beforeEach(function() {
+    setFixtures('<head><title>Lonely Dino Tees</title></head><body></body>');
     cart = new Cart;
   });
 
@@ -24,49 +26,48 @@ describe(".Cart", function() {
   });
 
   describe("#addShirtToCart", function() {
-    var cart;
-    beforeEach(function() {
-      cart = new Cart;
-    });
-
-    it("accepts two parameters, style and size, and adds them as an object to items", function() {
+    it("takes 2 params: 1) style 2) size, makes new object w/these params, then adds resulting object to items", function() {
       cart.addShirtToCart("locals", "large");
-      var items = cart.get("items");
-      expect(items.length).toEqual(1);
-      var shirt = items[0];
+
+      expect(cart.get("items").length).toEqual(1);
+      
+      var shirt = cart.get("items")[0];
+      expect(typeof shirt).toEqual("object");
       expect(shirt.style).toEqual("locals");
       expect(shirt.size).toEqual("large");
+    });
+
+    describe("updates costs", function() {
+      beforeEach(function() {
+        cart.addShirtToCart("locals", "large");
+      });
+
+      it("updates the subTotal (each shirt is 24.99)", function() {
+        expect(cart.get("items").length).toEqual(1);
+        expect(cart.get("subTotal")).toEqual(24.99);
+        cart.addShirtToCart("dino", "medium");
+        expect(cart.get("items").length).toEqual(2);
+        expect(cart.get("subTotal")).toEqual(49.98);
+      });
+
+      it("updates the shipping cost (standard 7.29 charge for one or more shirts)", function() {
+        expect(cart.get("shipping")).toEqual(7.29);
+        cart.addShirtToCart("dino", "medium");
+        expect(cart.get("shipping")).toEqual(7.29);
+      });
+
+      it("updates cost of taxes with a sales tax of 8.875% rounded *up* to the nearest cent", function() {
+        expect(cart.get("taxes")).toEqual(2.22);
+        cart.addShirtToCart("dino", "medium");
+        expect(cart.get("taxes")).toEqual(4.44);
+      });
+
+      it("updates total cost which is the sum of subTotal, taxes, and shipping rounded to the nearest cent", function() {
+        expect(cart.get("total")).toEqual(34.50);
+        cart.addShirtToCart("dino", "medium");
+        expect(cart.get("total")).toEqual(61.71);
+      });  
     }); 
-
-    it("updates the subTotal (each shirt is 24.99)", function() {
-      cart.addShirtToCart("locals", "large");
-      expect(cart.get("items").length).toEqual(1);
-      expect(cart.get("subTotal")).toEqual(24.99);
-      cart.addShirtToCart("dino", "medium");
-      expect(cart.get("items").length).toEqual(2);
-      expect(cart.get("subTotal")).toEqual(49.98);
-    });
-
-    it("updates the shipping cost (standard 7.29 charge for one or more shirts)", function() {
-      cart.addShirtToCart("locals", "large");
-      expect(cart.get("shipping")).toEqual(7.29);
-      cart.addShirtToCart("dino", "medium");
-      expect(cart.get("shipping")).toEqual(7.29);
-    });
-
-    it("updates cost of taxes with a sales tax of 8.875% rounded *up* to the nearest cent", function() {
-      cart.addShirtToCart("locals", "large");
-      expect(cart.get("taxes")).toEqual(2.22);
-      cart.addShirtToCart("dino", "medium");
-      expect(cart.get("taxes")).toEqual(4.44);
-    });
-
-    it("updates total cost which is the sum of subTotal, taxes, and shipping rounded to the nearest cent", function() {
-      cart.addShirtToCart("locals", "large");
-      expect(cart.get("total")).toEqual(34.50);
-      cart.addShirtToCart("dino", "medium");
-      expect(cart.get("total")).toEqual(61.71);
-    });  
   });
 });
 
@@ -98,15 +99,17 @@ describe("Integration Test", function() {
     $("select").val("medium");       // select size medium
     $("#add-to-cart").click();      // click "Add to Cart"
 
-    var cart = app.formView.model;
-    expect(cart.get("subTotal")).toEqual(24.99);
-    expect(cart.get("shipping")).toEqual(7.29);
-    expect(cart.get("taxes")).toEqual(2.22);
-    expect(cart.get("total")).toEqual(34.50);
+    var myCart = app.formView.model;
+
+    expect(myCart.get("subTotal")).toEqual(24.99);
+    expect(myCart.get("shipping")).toEqual(7.29);
+    expect(myCart.get("taxes")).toEqual(2.22);
+    expect(myCart.get("total")).toEqual(34.50);
     
-    var items = cart.get("items");
+    var items = myCart.get("items");
+    expect(items.length).toEqual(1);
     var tShirt = items[0];
-    expect(typeof items[0]).toEqual("object");
+    expect(typeof tShirt).toEqual("object");
     expect(tShirt.style).toEqual("down");
     expect(tShirt.size).toEqual("medium");
   });
@@ -120,17 +123,17 @@ describe("Integration Test", function() {
     $("select").val("large");          // select size large
     $("#add-to-cart").click();        // click "Add to Cart"
 
-    var cart = app.formView.model;
-    expect(cart.get("subTotal")).toEqual(49.98);
-    expect(cart.get("shipping")).toEqual(7.29);
-    expect(cart.get("taxes")).toEqual(4.44);
-    expect(cart.get("total")).toEqual(61.71);
+    var myCart = app.formView.model;
+    expect(myCart.get("subTotal")).toEqual(49.98);
+    expect(myCart.get("shipping")).toEqual(7.29);
+    expect(myCart.get("taxes")).toEqual(4.44);
+    expect(myCart.get("total")).toEqual(61.71);
     
-    var items = cart.get("items");
-    expect(items).toBeArray();
+    var items = myCart.get("items");
+    expect(items.length).toEqual(2);
     
     var tShirt = items[0];
-    expect(tShirt).toBeObject();
+    expect(typeof tShirt).toEqual("object");
     expect(tShirt.style).toEqual("down");
     expect(tShirt.size).toEqual("medium");
   });
