@@ -102,7 +102,7 @@ describe("Integration Tests", function() {
   it("adds a medium `down` t-shirt to the cart, update the subTotal, shipping, taxes, and price", function() {
     $("input[value='down']").click(); // select "I'm Down" shirt
     $("select").val("medium");       // select size medium
-    $("#add-to-cart").click();      // click "Add to Cart"
+    $("form").submit();             // click "Add to Cart"
 
     var cart = app.formView.model;
     expect(cart.get("subTotal")).toEqual(24.99);
@@ -121,10 +121,10 @@ describe("Integration Tests", function() {
   it("adds medium `down` t-shirt, then large `locals` t-shirt to the cart, updates the subTotal, shipping, taxes, and price", function() {
     $("input[value='down']").click();      // select "I'm Down" shirt
     $("select").val("medium");            // select size medium
-    $("#add-to-cart").click();           // click "Add to Cart"
+    $("form").submit();                  // click "Add to Cart"
     $("input[value='locals']").click(); // select "Eat Locals" shirt
     $("select").val("large");          // select size large
-    $("#add-to-cart").click();        // click "Add to Cart"
+    $("form").submit();               // click "Add to Cart"
 
     var cart = app.formView.model;
     expect(cart.get("subTotal")).toEqual(49.98);
