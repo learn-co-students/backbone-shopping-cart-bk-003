@@ -1,7 +1,7 @@
 # A list of javascript files required for the project, in dependency order
 javascripts:
   files:
-    - public/js/lib/closure.min.js
+    - public/js/lib/closure.js
     - public/js/lib/jquery.min.js
     - public/js/lib/underscore.js
     - public/js/lib/backbone.js
