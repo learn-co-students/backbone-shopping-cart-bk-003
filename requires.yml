@@ -9,5 +9,5 @@ javascripts:
     - public/js/views/main.js
     - public/js/app.js
   specs:
-    - lib/jasmine-jquery.js
+    - spec/jasmine-jquery.js
     - spec/main.spec.js

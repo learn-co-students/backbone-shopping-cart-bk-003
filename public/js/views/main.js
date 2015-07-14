@@ -1,8 +1,8 @@
 FormView = Backbone.View.extend({
   events : {
     "submit form": "addToCart"
-    // you'll want to add a submit event to the form
-    // it should trigger the addToCart function
+    // you'll want to add a click event to the button with an id of add-to-cart
+    // clicking this button should trigger the addToCart function
   },
   initialize : function() {
     // call on this instance's render function here
@@ -22,6 +22,8 @@ FormView = Backbone.View.extend({
     // make sure this function accepts the event parameter
 
     e.preventDefault();
+
+    debugger;
     // prevent the default behavior (submission) of the form 
     // (call preventDefault on the event) 
 

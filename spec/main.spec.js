@@ -92,21 +92,25 @@ describe("#lonelyDino", function() {
 });
 
 
-describe("Integration Test", function() {
-  it("adds a medium `down` t-shirt to the cart, update the subTotal, shipping, taxes, and price", function() {
+describe("Integration Tests", function() {
+  
+  beforeEach(function() {
+    setFixtures('<head><title>Lonely Dino Tees</title></head><body></body>');
     lonelyDino();
+  });
+  
+  it("adds a medium `down` t-shirt to the cart, update the subTotal, shipping, taxes, and price", function() {
     $("input[value='down']").click(); // select "I'm Down" shirt
     $("select").val("medium");       // select size medium
     $("#add-to-cart").click();      // click "Add to Cart"
 
-    var myCart = app.formView.model;
-
-    expect(myCart.get("subTotal")).toEqual(24.99);
-    expect(myCart.get("shipping")).toEqual(7.29);
-    expect(myCart.get("taxes")).toEqual(2.22);
-    expect(myCart.get("total")).toEqual(34.50);
+    var cart = app.formView.model;
+    expect(cart.get("subTotal")).toEqual(24.99);
+    expect(cart.get("shipping")).toEqual(7.29);
+    expect(cart.get("taxes")).toEqual(2.22);
+    expect(cart.get("total")).toEqual(34.50);
     
-    var items = myCart.get("items");
+    var items = cart.get("items");
     expect(items.length).toEqual(1);
     var tShirt = items[0];
     expect(typeof tShirt).toEqual("object");
@@ -115,7 +119,6 @@ describe("Integration Test", function() {
   });
 
   it("adds medium `down` t-shirt, then large `locals` t-shirt to the cart, updates the subTotal, shipping, taxes, and price", function() {
-    lonelyDino();
     $("input[value='down']").click();      // select "I'm Down" shirt
     $("select").val("medium");            // select size medium
     $("#add-to-cart").click();           // click "Add to Cart"
@@ -123,13 +126,13 @@ describe("Integration Test", function() {
     $("select").val("large");          // select size large
     $("#add-to-cart").click();        // click "Add to Cart"
 
-    var myCart = app.formView.model;
-    expect(myCart.get("subTotal")).toEqual(49.98);
-    expect(myCart.get("shipping")).toEqual(7.29);
-    expect(myCart.get("taxes")).toEqual(4.44);
-    expect(myCart.get("total")).toEqual(61.71);
+    var cart = app.formView.model;
+    expect(cart.get("subTotal")).toEqual(49.98);
+    expect(cart.get("shipping")).toEqual(7.29);
+    expect(cart.get("taxes")).toEqual(4.44);
+    expect(cart.get("total")).toEqual(61.71);
     
-    var items = myCart.get("items");
+    var items = cart.get("items");
     expect(items.length).toEqual(2);
     
     var tShirt = items[0];
