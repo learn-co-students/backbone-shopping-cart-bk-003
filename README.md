@@ -18,11 +18,11 @@ In this lab you'll be integrating slightly more complex models with your view to
 
 ![website](http://web-dev-readme-photos.s3.amazonaws.com/js/dino/html.png)
 
-Idealy, you should be able to click on a shirt style, a shirt size, and then click "Add to Cart".
+Ideally, you should be able to click on a shirt style, a shirt size, and then click "Add to Cart".
 
 ![first purchase](http://web-dev-readme-photos.s3.amazonaws.com/js/dino/first-purchase.png)
 
-In the console, you should then be able to access your `app` object, it's attached `view` object, the and view's attached `model` object. The items list should be updated along with the subtotal, shipping cost, taxes, and total:
+In the console, you should then be able to access your `app` object, it's attached `view` object, and the view's attached `model` object. The items list should be updated along with the subtotal, shipping cost, taxes, and total:
 
 ![console with one shirt](http://web-dev-readme-photos.s3.amazonaws.com/js/dino/one-shirt.png)
 
@@ -36,7 +36,7 @@ And the attributes should update again:
 
 ## Model
 
-So far our models have been pretty simple so we're going make a more robust model this time around. It will be a smart cart, in that it keeps track of the items the user wants to purchase and dynamically generates the subtotal, shipping, tax, and total costs. Up until now, our models have been pretty simple.
+So far our models have been pretty simple, so we're going make a more robust model this time around. It will be a smart cart, in that it keeps track of the items the user wants to purchase and dynamically generates the subtotal, shipping, tax, and total costs.
 
 #### Getting and Setting Values
 
@@ -50,7 +50,7 @@ user.get("admin");       // Returns true
 
 #### Defaults
 
-The model should default to having nothin in its list of items. It should also start with a subtotal, total, shipping, and tax all equalling zero. Let's take a look at how we might make default values for a website that sells tickets to a [Nick Jonas](http://media.giphy.com/media/CxJ3esBGiK3du/giphy.gif) concert in Arizona;
+The model should default to having nothing in its list of items. It should also start with a subtotal, total, shipping, and tax all equalling zero. Let's take a look at how we might make default values for a website that sells tickets to a [Nick Jonas](http://media.giphy.com/media/CxJ3esBGiK3du/giphy.gif) concert in Arizona;
 
 ```javascript
 JonasTicketVender = Backbone.Model.extend({
@@ -60,7 +60,6 @@ JonasTicketVender = Backbone.Model.extend({
     venue: "The Marquee",
     state: "AZ",
     city: "Tempe"
-  }
 });
 ```
 
@@ -83,7 +82,7 @@ JonasTicketVender = Backbone.Model.extend({
 
 #### Custom Methods
 
-Let's make a method in our JonasTicketVendor class that will add a band to the `openers` array. Well we'd have to fetch the array using the `.get()` function and save the array as a variable. We can push the band name into this temporary variable, the use the `set()` function to permanently change our instance of our model:
+Let's make a method in our `JonasTicketVendor` class that will add a band to the `openers` array. We'll have to fetch the array using the `.get()` function and save the array as a variable. We can push the band name into this temporary variable, then use the `set()` function to permanently change our instance of our model:
 
 ```javascript
 JonasTicketVendor = Backbone.Model.extend({
@@ -100,7 +99,7 @@ JonasTicketVendor = Backbone.Model.extend({
   addOpener: function(band) {
     var openers = this.get("openers");
     openers.push(band);
-    this.get("openers", openers);
+    this.set("openers", openers);
   }
 });
 ```
@@ -111,7 +110,7 @@ To call on this function, we first need to make a new `JonasTicketVendor`:
 var ticketVender = new JonasTicketVendor;
 ```
 
-Now we can call on the function on the instance of our `JonasTicketVendor` called `ticketVender`:
+Now we can call the function on the instance of our `JonasTicketVendor` called `ticketVender`:
 
 ```javascript
 ticketVender.addOpener("Matt McAndrew");
@@ -122,7 +121,7 @@ ticketVender.get("openers");
 
 ## Passing Models to Views
 
-It's useful to give your views a reference to your model and sometimes the reverse is also useful. If you pass in the `model` key into the object used to contruct the view Backbone attaches it directly to the view object it instantiates.
+It's useful to give your views a reference to your model, and sometimes the reverse is also useful. If you pass in the `model` key into the object used to contruct the view, Backbone attaches it directly to the view object it instantiates.
 
 ```javascript
 var ticketVendor = new JonasTicketVendor;
