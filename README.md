@@ -18,7 +18,7 @@ In this lab you'll be integrating slightly more complex models with your view to
 
 ![website](http://web-dev-readme-photos.s3.amazonaws.com/js/dino/html.png)
 
-Ideally, you should be able to click on a shirt style, a shirt size, and then click "Add to Cart".
+Ideally, you should be able to click on a shirt style, a shirt size, and then click "Purchase".
 
 ![first purchase](http://web-dev-readme-photos.s3.amazonaws.com/js/dino/first-purchase.png)
 
@@ -53,20 +53,21 @@ user.get("admin");       // Returns true
 The model should default to having nothing in its list of items. It should also start with a subtotal, total, shipping, and tax all equalling zero. Let's take a look at how we might make default values for a website that sells tickets to a [Nick Jonas](http://media.giphy.com/media/CxJ3esBGiK3du/giphy.gif) concert in Arizona;
 
 ```javascript
-JonasTicketVender = Backbone.Model.extend({
-  defaults:
-    numTixLeft: 47,
-    artistName: "Nick Jonas",
-    venue: "The Marquee",
-    state: "AZ",
-    city: "Tempe"
-});
+JonasTicketVendor = Backbone.Model.extend({
+  defaults: {
+      numTixLeft: 47,
+      artistName: "Nick Jonas",
+      venue: "The Marquee",
+      state: "AZ",
+      city: "Tempe"
+    }
+  });
 ```
 
 However, for the purposes of this lab's testing suite, we're going to wrap our defaults in a function that returns an object. This object will have the properties we'll need, like so:
 
 ```javascript
-JonasTicketVender = Backbone.Model.extend({
+JonasTicketVendor = Backbone.Model.extend({
   defaults: function() { 
     return {
       numTixLeft: 47,
@@ -107,15 +108,15 @@ JonasTicketVendor = Backbone.Model.extend({
 To call on this function, we first need to make a new `JonasTicketVendor`:
 
 ```javascript
-var ticketVender = new JonasTicketVendor;
+var ticketVendor = new JonasTicketVendor;
 ```
 
-Now we can call the function on the instance of our `JonasTicketVendor` called `ticketVender`:
+Now we can call the function on the instance of our `JonasTicketVendor` called `ticketVendor`:
 
 ```javascript
-ticketVender.addOpener("Matt McAndrew");
+ticketVendor.addOpener("Matt McAndrew");
 
-ticketVender.get("openers");
+ticketVendor.get("openers");
 // Returns ["Tinashe", "Maroon 5", "Matt McAndrew"]
 ```
 
