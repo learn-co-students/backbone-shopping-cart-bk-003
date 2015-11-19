@@ -1,20 +1,23 @@
 Cart = Backbone.Model.extend({
   defaults: function() { 
     return {
-
-      // here you'll put the default properties you'll want to use
-      // for instance, if you want to default the number of wheels of the cart
-      // and the cart's name (not that a cart having a name makes any sense) 
-      // you could do:
-
-      // wheelNum: 4,
-      // name: "McCarty Cart Cart Jr."
+      items : new Array,
+      subTotal: 0,
+      shipping: 0,
+      taxes: 0,
+      total: 0
     };
   },
   addShirtToCart: function(style, size) {
-    // this function takes two params
-    // it should make a "shirt" object, add it to items
-    // it should then update the subTotal, shipping cost, taxes
-    // it should then use these updated values to update the total
+    function Shirt(style, size){
+      this.style = style
+      this.size = size
+    };
+    var newShirt = new Shirt(style, size);
+    this.attributes.items.push(newShirt);
+    this.attributes.subTotal += 24.99;
+    this.attributes.shipping = 7.29;
+    this.attributes.taxes = parseFloat((this.attributes.subTotal * .08875).toFixed(2));
+    this.attributes.total = parseFloat((this.attributes.subTotal + this.attributes.shipping + this.attributes.taxes).toFixed(2));
   }
 });
