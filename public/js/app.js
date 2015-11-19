@@ -11,6 +11,11 @@ function lonelyDino() {
   // attach your view object to the app object as a property called "formView"
 
   // append your view object's HTML to the div with the class container here
+  app.cart = new Cart();
+  app.formView = new FormView({model : app.cart});
+  document.body = document.body || document.createElement('body');
+  document.body.appendChild(app.formView.el);
+
 }
 
 lonelyDino();
