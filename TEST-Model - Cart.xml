@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="8" errors="0" failures="0" time="0.012" timestamp="2015-11-23T16:57:22">
+		<testcase classname="Model - Cart" name="inherits from Backbone correctly" time="0.004">
+		</testcase>
+		<testcase classname="Model - Cart" name="defaults to have a property items pointing to an empty array" time="0.001">
+		</testcase>
+		<testcase classname="Model - Cart" name="defaults to have four properties: subTotal, shipping, taxes, total, all pointing to zero" time="0.001">
+		</testcase>
+		<testcase classname="Model - Cart" name="#addShirtToCart takes 2 params: 1) style 2) size, makes new object w/these params, then adds resulting object to items" time="0.001">
+		</testcase>
+		<testcase classname="Model - Cart" name="#addShirtToCart updates costs updates the subTotal (each shirt is 24.99)" time="0.001">
+		</testcase>
+		<testcase classname="Model - Cart" name="#addShirtToCart updates costs updates the shipping cost (standard 7.29 charge for one or more shirts)" time="0.001">
+		</testcase>
+		<testcase classname="Model - Cart" name="#addShirtToCart updates costs updates cost of taxes with a sales tax of 8.875% rounded *up* to the nearest cent" time="0">
+		</testcase>
+		<testcase classname="Model - Cart" name="#addShirtToCart updates costs updates total cost which is the sum of subTotal, taxes, and shipping rounded to the nearest cent" time="0.001">
+		</testcase>
+	</testsuite>
+</testsuites>
+
