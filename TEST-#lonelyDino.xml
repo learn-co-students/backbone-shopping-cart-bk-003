@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="2" errors="0" failures="0" time="0.003" timestamp="2015-11-23T16:57:22">
+		<testcase classname="#lonelyDino" name="instantiates a new cart, passes the cart to the view, attaches the view to the app" time="0.001">
+		</testcase>
+		<testcase classname="#lonelyDino" name="appends the html to the body of the page" time="0.001">
+		</testcase>
+	</testsuite>
+</testsuites>
+

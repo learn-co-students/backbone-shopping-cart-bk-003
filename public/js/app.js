@@ -1,6 +1,10 @@
 app = {};
 
 function lonelyDino() {
+  var cart = new Cart();
+  var view = new FormView({model: cart});
+  app.formView = view
+  $('body').append(app.formView.$el)
   // instantiate a new cart object and save it as a variable here
 
   // instantiate your view object here:

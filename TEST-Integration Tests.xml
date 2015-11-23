@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="2" errors="0" failures="0" time="0.01" timestamp="2015-11-23T16:57:22">
+		<testcase classname="Integration Tests" name="adds a medium `down` t-shirt to the cart, update the subTotal, shipping, taxes, and price" time="0.006">
+		</testcase>
+		<testcase classname="Integration Tests" name="adds medium `down` t-shirt, then large `locals` t-shirt to the cart, updates the subTotal, shipping, taxes, and price" time="0.004">
+		</testcase>
+	</testsuite>
+</testsuites>
+
